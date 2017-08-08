@@ -38,8 +38,8 @@ async def on_member_join(member):
     joinEmbed.set_footer(text='User Joined')
     joinEmbed.set_thumbnail(url=member.avatar_url)
     await bot.send_message(discord.utils.get(member.server.channels, name='joinleave'), embed=joinEmbed)
-    await bot.add_roles(member, discord.utils.get(member.server.roles, name="Elevens [Users]"))
-    logMsg = "{0} ({0.id}) has just joined {1}. Added the 'Elevens [User]' Role to {0}.".format(member, server)
+    await bot.add_roles(member, discord.utils.get(member.server.roles, name="Watcher"))
+    logMsg = "{0} ({0.id}) has just joined {1}. Added the 'Watcher' Role to {0}.".format(member, server)
     log(logMsg)
 		
    # Who am I Command
@@ -74,7 +74,7 @@ async def ping(ctx):
     msgNow = datetime.now()
     await bot.send_message(ctx.message.channel, "The message was sent at: " + str(msgNow - msgTimeSent))
 	
-	# XKCD Comic Command
+    # XKCD Comic Command
 @bot.command(pass_context = True)
 async def x(ctx, cnumber : str):
     """Returns the XKCD comic specified"""
