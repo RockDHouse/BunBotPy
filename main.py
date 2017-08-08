@@ -90,7 +90,7 @@ async def ping(ctx):
 @bot.command(pass_context = True)
 async def x(ctx, cnumber : str):
 	"""Returns the XKCD comic specified"""
-	if isnumeric(cnumber):
+	if is_number(cnumber):
 		await bot.send_message(ctx.message.channel, "https://xkcd.com/" + cnumber + "/")
 	else:
 		await bot.send_message(ctx.message.channel, "Error: Not a comic number")
