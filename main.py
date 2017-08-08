@@ -41,7 +41,18 @@ async def on_member_join(member):
     await bot.add_roles(member, discord.utils.get(member.server.roles, name="Watcher"))
     logMsg = "{0} ({0.id}) has just joined {1}. Added the 'Watcher' Role to {0}.".format(member, server)
     log(logMsg)
-		
+	
+@client.event
+async def on_member_remove(member):
+	server = member.server
+	server = member.server
+	leaveEmbed = discord.Embed(title="{} has left the server.".format(member), description= 'Leave Date: {} UTC'.format(datetime.utcnow()), color=discord.Color.red())
+	leaveEmbed.set_footer(text='User Left')
+	leaveEmbed.set_thumbnail(url=member.avatar_url)
+	await bot.send_message(discord.utils.get(member.server.channels, name='joinleave'), embed=leaveEmbed)
+	logMsg = "{0} ({0.id}) has just left {1}.".format(member, server)
+	log(logMsg)
+
    # Who am I Command
 @bot.command(pass_context = True)
 async def whoami(ctx):
@@ -77,8 +88,17 @@ async def ping(ctx):
     # XKCD Comic Command
 @bot.command(pass_context = True)
 async def x(ctx, cnumber : str):
-    """Returns the XKCD comic specified"""
-    await bot.send_message(ctx.message.channel, "https://xkcd.com/" + cnumber + "/")
+	"""Returns the XKCD comic specified"""
+	if is_number(cnumber):
+		await bot.send_message(ctx.message.channel, "https://xkcd.com/" + cnumber + "/")
+	else:
+		await bot.send_message(ctx.message.channel, "Error: Not a comic number")
+		
+@client.event(pass_context = True)
+async def on_message(ctx):
+	if(ctx.message.channel == discord.utils.get(ctx.member.server.channels, name='spottings')):
+		await bot.add_roles(ctx.member, discord.utils.get(ctx.member.server.roles, name="Spotter"))
+
 	
 class VoiceEntry:
     def __init__(self, message, player):
