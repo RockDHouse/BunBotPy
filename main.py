@@ -22,7 +22,7 @@ async def on_ready():
     print("Logged in as: {0}, with the ID of: {1}".format(client.user, client.user.id))
     await client.change_presence(game=discord.Game(name='in the meadow'))
     print("--")
-
+'''
     if not discord.opus.is_loaded():
         # the 'opus' library here is opus.dll on windows
         # or libopus.so on linux in the current directory
@@ -30,6 +30,7 @@ async def on_ready():
         # opus library is located in and with the proper filename.
         # note that on windows this DLL is automatically provided for you
         discord.opus.load_opus('opus')
+'''
 		
 @client.event
 async def on_member_join(member):
@@ -89,14 +90,17 @@ async def ping(ctx):
 @bot.command(pass_context = True)
 async def x(ctx, cnumber : str):
 	"""Returns the XKCD comic specified"""
-	await bot.send_message(ctx.message.channel, "https://xkcd.com/" + cnumber + "/")
+	if isnumeric(cnumber):
+		await bot.send_message(ctx.message.channel, "https://xkcd.com/" + cnumber + "/")
+	else:
+		await bot.send_message(ctx.message.channel, "Error: Not a comic number")
 		
 #@client.event
 #async def on_message(ctx):
 #	if(ctx.message.channel == discord.utils.get(ctx.member.server.channels, name='spottings')):
 #		await bot.add_roles(ctx.member, discord.utils.get(ctx.member.server.roles, name="Spotter"))
 
-	
+'''	
 class VoiceEntry:
     def __init__(self, message, player):
         self.requester = message.author
@@ -277,6 +281,6 @@ class Music:
         if state.current is None:
             await self.bot.say('Not playing anything.')
 bot.add_cog(Music(bot))
-
+'''
 client.run(authDeets.token)
 
