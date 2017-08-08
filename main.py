@@ -282,5 +282,13 @@ class Music:
             await self.bot.say('Not playing anything.')
 bot.add_cog(Music(bot))
 '''
+
+def is_number(s):
+	try:
+		float(s)
+		return True
+	except ValueError:
+		return False
+
 client.run(authDeets.token)
 
