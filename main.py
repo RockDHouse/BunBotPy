@@ -94,10 +94,10 @@ async def x(ctx, cnumber : str):
 	else:
 		await bot.send_message(ctx.message.channel, "Error: Not a comic number")
 		
-@client.event
-async def on_message(ctx):
-	if(ctx.message.channel == discord.utils.get(ctx.member.server.channels, name='spottings')):
-		await bot.add_roles(ctx.member, discord.utils.get(ctx.member.server.roles, name="Spotter"))
+#@client.event
+#async def on_message(ctx):
+#	if(ctx.message.channel == discord.utils.get(ctx.member.server.channels, name='spottings')):
+#		await bot.add_roles(ctx.member, discord.utils.get(ctx.member.server.roles, name="Spotter"))
 
 	
 class VoiceEntry:
