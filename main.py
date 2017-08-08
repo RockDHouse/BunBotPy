@@ -89,7 +89,7 @@ async def ping(ctx):
 @bot.command(pass_context = True)
 async def x(ctx, cnumber : str):
 	"""Returns the XKCD comic specified"""
-	if is_number(cnumber):
+	if isnumeric(cnumber):
 		await bot.send_message(ctx.message.channel, "https://xkcd.com/" + cnumber + "/")
 	else:
 		await bot.send_message(ctx.message.channel, "Error: Not a comic number")
@@ -280,16 +280,6 @@ class Music:
         if state.current is None:
             await self.bot.say('Not playing anything.')
 bot.add_cog(Music(bot))
-
-def log(message):
-    print(datetime.now(), message)
-	
-def is_number(s):
-    try:
-        float(s)
-        return True
-    except ValueError:
-        return False
 
 client.run(authDeets.token)
 
