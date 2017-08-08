@@ -1,0 +1,2 @@
+#BunBot
+token = "MzQzNzMxNTI0MDUyNDUxMzI5.DGt5BQ.YXHFjVMyY3XFnh2gqBjFUHzrH40"
