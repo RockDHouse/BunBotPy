@@ -5,8 +5,6 @@ import authDeets
 import time
 from discord.ext import commands
 import random
-#import logging
-import youtube_dl
 import csv
 from threading import Timer
 from datetime import datetime
