@@ -94,7 +94,8 @@ async def on_message(message):
 				await bot.remove_roles(message.author, discord.utils.get(message.server.roles, name="Watcher"))
 				logMsg = "{} was upgraded to Spotter".format(message.author)
 				log(logMsg)
-	await bot.process_commands(message)
+	else:
+		await bot.process_commands(message)
 
 def is_number(s):
 	try:
