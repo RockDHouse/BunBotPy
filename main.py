@@ -108,4 +108,3 @@ def log(message):
     print(datetime.now(), message)
 
 client.run(authDeets.token)
-
